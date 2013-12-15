@@ -14,8 +14,11 @@
 
     </head>
     <body>
-
+        {% if image_url %}
+            <img src="{{ image_url }}" />
+        {% endif %}
         <form name="myform" action="{{ upload_url }}" method="post" enctype="multipart/form-data">
+            <h1>Select an Image</h1>
             <input name="file" type="file"><br>
             <input type="submit" value="Upload">
         </form>

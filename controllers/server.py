@@ -37,10 +37,15 @@ class RootPage(webapp2.RequestHandler):
 class UploadFormHandler(webapp2.RequestHandler):
 
     def get(self):
+        image_url = self.request.get('image_url')
+
         upload_url = blobstore.create_upload_url('/handleblobs/')
         jinja_environment = self.jinja_environment
         template = jinja_environment.get_template("/form.html")
-        self.response.out.write(template.render({'upload_url': upload_url}))
+        self.response.out.write(template.render({
+            'upload_url': upload_url,
+            'image_url': image_url
+        }))
 
     @property
     def jinja_environment(self):
@@ -59,11 +64,10 @@ class UploadBlobsHandler(blobstore_handlers.BlobstoreUploadHandler):
         try:
             upload = self.get_uploads()[0]
             logging.info(upload)
+            url = images.get_serving_url(upload)
             # Do something with it.
         except:
-            self.redirect('/uploadform/?error')
-            return
+            self.redirect('/uploadform/?error', abort=True)
 
-        url = images.get_serving_url(upload)
-        self.redirect('/uploadform/?success&url=' + url)
+        self.redirect('/uploadform/?success&image_url=' + url)
 
