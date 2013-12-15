@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html data-ng-app="mainApp">
-	<head>
+    <head>
 
-		<!-- Define the base of the application -->
-		<base href="/">
+        <!-- Define the base of the application -->
+        <base href="/">
 
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-		<!-- Lets get rid of old explorers. I don't want to spend any more nimute coding for them -->
-		<!--[if lte IE 9]>
-			<meta http-equiv="refresh" content="0; http://www.ie6countdown.com/">
-		<![endif]-->
+        <!-- Lets get rid of old explorers. I don't want to spend any more minute coding for them -->
+        <!--[if lte IE 9]>
+            <meta http-equiv="refresh" content="0; http://www.ie6countdown.com/">
+        <![endif]-->
 
-	</head>
-	<body>
+    </head>
+    <body>
 
-		<form name="myform" action="{{ upload_url }}" method="post" enctype="multipart/form-data">
+        <form name="myform" action="{{ upload_url }}" method="post" enctype="multipart/form-data">
             <input name="file" type="file"><br>
             <input type="submit" value="Upload">
         </form>
 
-	</body>
+    </body>
 </html>
